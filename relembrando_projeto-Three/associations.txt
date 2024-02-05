@@ -1,0 +1,25 @@
+
+pertence a
+belongs_to
+
+tem um
+has_one
+
+tem muitos
+has_many
+
+tem muitos aatraves
+has_many :through
+
+tem um atraves
+has_one :through
+
+tem e pertence a muitos
+has_and_belongs_to_many
+
+
+
+rails g model autor nome && rails g model book nome
+
+//criando o model book já referenciando que pertence a um autor na tabela
+rails g model autor nome && rails g model book nome autor:references
