@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_05_170141) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_05_172257) do
   create_table "accounts", force: :cascade do |t|
     t.integer "autor_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["autor_id"], name: "index_accounts_on_autor_id"
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.integer "doctor_id", null: false
+    t.integer "patient_id", null: false
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
+    t.index ["patient_id"], name: "index_appointments_on_patient_id"
   end
 
   create_table "autors", force: :cascade do |t|
@@ -32,6 +42,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_05_170141) do
     t.index ["autor_id"], name: "index_books_on_autor_id"
   end
 
+  create_table "doctors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "accounts", "autors"
+  add_foreign_key "appointments", "doctors"
+  add_foreign_key "appointments", "patients"
   add_foreign_key "books", "autors"
 end

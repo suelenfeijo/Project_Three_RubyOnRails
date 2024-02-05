@@ -23,3 +23,10 @@ rails g model autor nome && rails g model book nome
 
 //criando o model book já referenciando que pertence a um autor na tabela
 rails g model autor nome && rails g model book nome autor:references
+
+
+
+
+rails g model  doctor name &&
+rails g model patient && 
+rails g model appointment doctor:references patient:references date:datetime
